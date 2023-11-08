@@ -57,6 +57,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    Final(Modifier)
                     //Greeting("Android")
                 }
             }
@@ -68,8 +69,8 @@ class MainActivity : ComponentActivity() {
 fun Final(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
-            .requiredWidth(width = 375.dp)
-            .requiredHeight(height = 1226.dp)
+            //.requiredWidth(width = 375.dp)
+            //.requiredHeight(height = 1226.dp)
             .background(color = Color(0xff050b18))
             .padding(horizontal = 24.dp)
     ) {
@@ -82,7 +83,7 @@ fun Final(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 300.dp)
 
         ) {
-            Surface {
+            Box(modifier = Modifier) {
                 // Главная картинка
                 Image(
                     painter = painterResource(id = R.drawable.image16),
@@ -98,11 +99,13 @@ fun Final(modifier: Modifier = Modifier) {
                 // Тень на главной картинке
                 Box(
                     modifier = Modifier
+                        .requiredWidth(width = 375.dp)
+                        .requiredHeight(height = 80.dp)
                         .background(
                             brush = Brush.verticalGradient(
                                 0F to Color.Black.copy(alpha = 0.8F),
-                                .125F to Color.Black.copy(alpha = 0.5F),
-                                0.25F to Color.Transparent
+                                .5f to Color.Black.copy(alpha = 0.5F),
+                                1F to Color.Transparent
                             )
                         )
                 )
@@ -164,7 +167,6 @@ fun Final(modifier: Modifier = Modifier) {
                     verticalArrangement = Arrangement.Bottom
                 ) {
 
-                    //Spacer(modifier = Modifier.height(40.dp))
 
                     Text(
                         text = "DoTA 2",
@@ -211,9 +213,12 @@ fun Final(modifier: Modifier = Modifier) {
                     }
                 }
             }
+
         }
 
-// Категории.Тэги
+        Spacer(modifier = Modifier.height(75.dp))
+
+        // Категории.Тэги
         Row(
             modifier = Modifier
                 .requiredWidth(width = 239.dp)
@@ -232,13 +237,15 @@ fun Final(modifier: Modifier = Modifier) {
                     color = Color(0xff44a9f4),
                     style = TextStyle(
                         fontSize = 10.sp,
-                        fontWeight = FontWeight.Medium),
+                        fontWeight = FontWeight.Medium
+                    ),
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(
                             x = 13.dp,
                             y = 5.dp
-                        ))
+                        )
+                )
 
 
             }
@@ -256,13 +263,15 @@ fun Final(modifier: Modifier = Modifier) {
                     color = Color(0xff41a0e7),
                     style = TextStyle(
                         fontSize = 10.sp,
-                        fontWeight = FontWeight.Medium),
+                        fontWeight = FontWeight.Medium
+                    ),
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(
-                            x = 10.dp,
+                            x = 13.dp,
                             y = 5.dp
-                        ))
+                        )
+                )
             }
 
             Spacer(modifier = Modifier.width(10.dp))
@@ -280,21 +289,181 @@ fun Final(modifier: Modifier = Modifier) {
                     color = Color(0xff41a0e7),
                     style = TextStyle(
                         fontSize = 10.sp,
-                        fontWeight = FontWeight.Medium),
+                        fontWeight = FontWeight.Medium
+                    ),
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(
-                            x = 10.dp,
+                            x = 13.dp,
                             y = 5.dp
-                        ))
+                        )
+                )
             }
         }
 
+        Spacer(modifier = Modifier.height(25.dp))
 
+        // Описание
+        Text(
+            text = "Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own.",
+            color = Color(0xffeef2fb).copy(alpha = 0.7f),
+            lineHeight = 1.58.em,
+            style = TextStyle(
+                fontSize = 12.sp
+            ),
+            modifier = Modifier
+                .requiredWidth(width = 327.dp)
 
+        )
 
+        Spacer(modifier = Modifier.height(15.dp))
 
+        // Картинка и видео
+        Row(modifier = Modifier,
+            horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally)) {
+            Box(modifier = Modifier) {
+                Image(
+                    painter = painterResource(id = R.drawable.image18),
+                    contentDescription = "image 18",
+                    modifier = Modifier
+                        .requiredWidth(width = 240.dp)
+                        .requiredHeight(height = 128.dp)
+                        .clip(shape = RoundedCornerShape(14.dp))
+                )
 
+                IconButton(
+                    modifier = Modifier
+                        .requiredSize(size = 48.dp)
+                        .offset(
+                            x = 96.dp,
+                            y = 40.dp
+                        ),
+                    onClick = { }
+                ) {
+                    Box(modifier = Modifier) {
+                        Box(
+                            modifier = Modifier
+                                .requiredSize(size = 48.dp)
+                                .clip(shape = CircleShape)
+                                .background(color = Color.White.copy(alpha = 0.24f))
+                        )
+                        Icon(
+                            painter = painterResource(id = R.drawable.arrowright2),
+                            contentDescription = "Iconly/Bold/Arrow - Right 2",
+                            tint = Color.White,
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopStart)
+                                .offset(
+                                    x = 12.dp,
+                                    y = 12.dp
+                                )
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.width(180.dp))
+
+            Box(modifier = Modifier) {
+                Image(
+                    painter = painterResource(id = R.drawable.image19),
+                    contentDescription = "image 19",
+                    modifier = Modifier
+                        .requiredWidth(width = 240.dp)
+                        .requiredHeight(height = 128.dp)
+                        .clip(shape = RoundedCornerShape(14.dp))
+                        .offset(
+                            x = 40.dp,
+                        )
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        // Review & Ratings
+        Column(
+            modifier = Modifier
+                .requiredHeight(height = 89.dp)
+        ) {
+            Text(
+                text = "Review & Ratings",
+                color = Color(0xffeef2fb),
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.6.sp
+                )
+            )
+
+            Row() {
+                Text(
+                    text = "4.9",
+                    color = Color.White,
+                    style = TextStyle(
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+
+                Spacer(modifier = Modifier.width(15.dp))
+
+                // Рейтинг и просмотры
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(1f)
+                        .padding(vertical = 15.dp),
+                    verticalArrangement = Arrangement.Bottom
+                ) {
+                    Box() {
+                        Image(
+                            painter = painterResource(id = R.drawable.group98),
+                            contentDescription = "group98",
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopStart)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Text(
+                        text = "70M Reviews",
+                        color = Color(0xffa8adb7),
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            letterSpacing = 0.4.sp
+                        ),
+                    )
+                }
+            }
+        }
+
+        // Комментарий 1
+        Comment(
+            name = "Auguste Conte",
+            text = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”",
+            date = "February 14, 2019",
+            id = R.drawable.ellipse9
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Divider(
+            color = Color(0xff1a1f29),
+            modifier = Modifier.requiredWidth(width = 300.dp)
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        // Комментарий 2
+        Comment(
+            name = "Jang Marcelino",
+            text = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”",
+            date = "February 14, 2019",
+            id = R.drawable.ellipse91
+        )
+
+        Spacer(modifier = Modifier.height(30.dp))
 
         //  Кнопка Install
         Box(
@@ -307,203 +476,25 @@ fun Final(modifier: Modifier = Modifier) {
                     .requiredWidth(width = 327.dp)
                     .requiredHeight(height = 64.dp)
                     .clip(shape = RoundedCornerShape(12.dp))
-                    .background(color = Color(0xfff4d144)))
+                    .background(color = Color(0xfff4d144))
+            )
             Text(
                 text = "Install",
                 color = Color(0xff050b18),
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.6.sp),
+                    letterSpacing = 0.6.sp
+                ),
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(
                         x = 134.dp,
                         y = 20.dp
-                    ))
-        }
-
-        Comment (name = "Auguste Conte",
-                text = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”",
-                date = "February 14, 2019",
-                id = R.drawable.ellipse9)
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Divider(
-                color = Color(0xff1a1f29),
-                modifier = Modifier.requiredWidth(width = 300.dp))
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Comment (name = "Jang Marcelino",
-                text = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”",
-                date = "February 14, 2019",
-                id = R.drawable.ellipse91)
-
-        Box(
-            modifier = Modifier
-
-                .offset(
-                    x = 24.dp,
-                    y = 683.dp
-                )
-                .requiredWidth(width = 161.dp)
-                .requiredHeight(height = 89.dp)
-        ) {
-            Text(
-                text = "Review & Ratings",
-                color = Color(0xffeef2fb),
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.6.sp))
-            Box(
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(
-                        x = 0.dp,
-                        y = 31.dp
                     )
-                    .requiredWidth(width = 161.dp)
-                    .requiredHeight(height = 58.dp)
-            ) {
-                Text(
-                    text = "4.9",
-                    color = Color.White,
-                    style = TextStyle(
-                        fontSize = 48.sp,
-                        fontWeight = FontWeight.Bold))
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(
-                            x = 85.dp,
-                            y = 17.dp
-                        )
-                        .requiredWidth(width = 76.dp)
-                        .requiredHeight(height = 34.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .requiredWidth(width = 76.dp)
-                            .requiredHeight(height = 12.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.group98),
-                            contentDescription = "group98",
-                            modifier = Modifier
-                                .align(alignment = Alignment.TopStart)
-                                )
-                    }
-                    Text(
-                        text = "70M Reviews",
-                        color = Color(0xffa8adb7),
-                        style = TextStyle(
-                            fontSize = 12.sp,
-                            letterSpacing = 0.4.sp),
-                        modifier = Modifier
-
-                            .offset(
-                                x = 0.dp,
-                                y = 20.dp
-                            ))
-                }
-            }
+            )
         }
 
-
-        Surface(
-            modifier = Modifier
-
-                .offset(
-                    x = 24.dp,
-                    y = 531.dp
-                )
-                .requiredWidth(width = 240.dp)
-                .requiredHeight(height = 128.dp)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.image18),
-                contentDescription = "image 18",
-                modifier = Modifier
-
-                    .offset(
-                        x = 0.dp,
-                        y = (-3).dp
-                    )
-                    .requiredWidth(width = 240.dp)
-                    .requiredHeight(height = 135.dp)
-                    .clip(shape = RoundedCornerShape(14.dp)))
-
-
-            IconButton(
-                onClick = { },
-                modifier = Modifier
-
-
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredSize(size = 48.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .requiredSize(size = 48.dp)
-                            .clip(shape = CircleShape)
-                            .background(color = Color.White.copy(alpha = 0.24f)))
-                    Icon(
-                        painter = painterResource(id = R.drawable.arrowright2),
-                        contentDescription = "Iconly/Bold/Arrow - Right 2",
-                        tint = Color.White,
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(
-                                x = 12.dp,
-                                y = 12.dp
-                            ))
-                }
-            }
-        }
-        Box(
-            modifier = Modifier
-
-                .offset(
-                    x = 280.dp,
-                    y = 531.dp
-                )
-                .requiredWidth(width = 240.dp)
-                .requiredHeight(height = 128.dp)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.image19),
-                contentDescription = "image 19",
-                modifier = Modifier
-
-                    .offset(
-                        x = (-1).dp,
-                        y = 0.dp
-                    )
-                    .requiredWidth(width = 242.dp)
-                    .requiredHeight(height = 138.dp)
-                    .clip(shape = RoundedCornerShape(14.dp)))
-        }
-
-        Text(
-            text = "Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own.",
-            color = Color(0xffeef2fb).copy(alpha = 0.7f),
-            lineHeight = 1.58.em,
-            style = TextStyle(
-                fontSize = 12.sp),
-            modifier = Modifier
-
-                .offset(
-                    x = 21.dp,
-                    y = 437.dp
-                )
-                .requiredWidth(width = 327.dp)
-
-        )
     }
 }
 
@@ -528,7 +519,8 @@ fun Comment(name: String, text: String, date: String, @DrawableRes id: Int) {
                 contentDescription = "Fotka",
                 modifier = Modifier
                     .requiredSize(size = 36.dp)
-                    .clip(shape = CircleShape))
+                    .clip(shape = CircleShape)
+            )
 
             Spacer(modifier = Modifier.width(15.dp))
 
@@ -541,13 +533,15 @@ fun Comment(name: String, text: String, date: String, @DrawableRes id: Int) {
                 Text(
                     text = name,
                     color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge)
+                    style = MaterialTheme.typography.bodyLarge
+                )
                 Text(
                     text = date,
                     color = Color.White.copy(alpha = 0.4f),
                     style = TextStyle(
                         fontSize = 12.sp,
-                        letterSpacing = 0.5.sp),
+                        letterSpacing = 0.5.sp
+                    ),
                 )
             }
         }
@@ -561,15 +555,16 @@ fun Comment(name: String, text: String, date: String, @DrawableRes id: Int) {
             lineHeight = 1.67.em,
             style = TextStyle(
                 fontSize = 12.sp,
-                letterSpacing = 0.5.sp),
+                letterSpacing = 0.5.sp
+            ),
             modifier = Modifier
-                .requiredWidth(width = 327.dp))
+                .requiredWidth(width = 327.dp)
+        )
 
     }
 
 
 }
-
 
 
 @Preview(widthDp = 375, heightDp = 1226)
